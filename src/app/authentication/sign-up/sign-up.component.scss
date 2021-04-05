@@ -1,0 +1,28 @@
+.sign-up {
+    background-color: #222;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .form-details {
+      background-color: #fff;
+      padding: 2em;
+      border-radius: 20px;
+      .btn-sign {
+        float: right;
+        color: #fff;
+        background-color: rgb(42, 151, 151);
+        border-radius: 10px;
+        padding: 0.4em 1.7em;
+      }
+      h6 {
+        color: #333;
+        margin-top: 1.5em;
+        a {
+          color: rgb(42, 151, 151);
+        }
+      }
+    }
+  }
+  
