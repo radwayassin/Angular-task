@@ -4,26 +4,39 @@
             <div class="offset-md-3"></div>
             <div class="col-md-6">
                 <div class="form-details">
-                    <form>
+                    <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
                         <div class="form-group">
                             <label for="validationServer01">Full name</label>
-                            <input type="text" class="form-control" id="validationServer01">
-                           
+                            <input type="text" class="form-control" id="validationServer01" formControlName="name">
+                            <span class="help"
+                                *ngIf="!signUpForm.get('name').valid && signUpForm.get('name').touched">
+                                Please enter vaild name!
+                            </span>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
                             <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                                else.</small>
+                                aria-describedby="emailHelp" formControlName="email">
+                                <span class="help"
+                                *ngIf="!signUpForm.get('email').valid && signUpForm.get('email').touched">
+                                Please enter vaild email!
+                            </span>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                            <span class="help"
+                                *ngIf="!signUpForm.get('password').valid && signUpForm.get('password').touched">
+                                Please enter vaild password!
+                            </span>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword2">Confirm Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword2">
+                            <input type="password" class="form-control" id="exampleInputPassword2" formControlName="confirm-pass">
+                            <span class="help"
+                                *ngIf="!signUpForm.get('confirm-pass').valid && signUpForm.get('confirm-pass').touched">
+                                Passwords not matching!
+                            </span>
                         </div>
                         <button type="submit" class="btn btn-sign">Sign up</button>
                     </form>
