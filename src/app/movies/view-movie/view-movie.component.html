@@ -9,6 +9,7 @@
                 <p>{{movieDetails?.overview}}</p>
                 <a [href]="movieDetails?.homepage" class="site">Go to Website</a>
                 <div class="form-details">
+                    <h6>Comments</h6>
                     <ul class="comment-list">
                         <li *ngFor="let comment of comments">
                             {{comment}}

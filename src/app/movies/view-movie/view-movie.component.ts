@@ -13,9 +13,7 @@ export class ViewMovieComponent implements OnInit {
   movieDetails: any;
   imgUrl = 'https://image.tmdb.org/t/p/w500';
   comments: Array<any> =[];
-  constructor(private route: ActivatedRoute, private dataService: DataService) {
-    localStorage.setItem('comments', JSON.stringify(this.comments));
-  }
+  constructor(private route: ActivatedRoute, private dataService: DataService) {}
   getMovie() {
     this.dataService.getMovieDetails(this.movieId).subscribe(
       (res) => {
@@ -36,5 +34,6 @@ export class ViewMovieComponent implements OnInit {
       this.movieId = +params.get('id')!;
     });
     this.getMovie();
+    this.comments = JSON.parse(localStorage.getItem('comments'))
   }
 }

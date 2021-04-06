@@ -7,11 +7,10 @@
         <p class="card-text">{{(movie.overview?.length>90)? (movie.overview | slice:0:90)+' ...
             ':(movie.overview)}}</p>
         <div class="btns">
-            <button class="btn like" *ngIf="!isLiked" (click)="getLiked(movie)"><i
-                    class="far fa-thumbs-up"></i></button>
-            <button class="btn like" *ngIf="isLiked" (click)="getLiked(movie)"><i class="fas fa-thumbs-up"></i></button>
-            <button class="btn fav" *ngIf="!isFav" (click)="getFavourits(movie)"><i class="far fa-heart"></i></button>
-            <button class="btn fav" *ngIf="isFav" (click)="getFavourits(movie)"><i class="fas fa-heart"></i></button>
+            <button class="btn like" (click)="getLiked(movie)">
+                <i  [ngClass]="{ 'fas' :  movie.isLiked  , 'far' : !movie.isLiked }" class="fa-thumbs-up"></i></button>
+            <button class="btn fav" (click)="getFavourits(movie)">
+                <i [ngClass]="{ 'fas' :  movie.isFav  , 'far' : !movie.isFav }" class="fa-heart"></i></button>
         </div>
     </div>
 </div>
