@@ -15,7 +15,7 @@ export class AuthService {
         this.router.navigate(['/movies']);
         response.user
           .getIdToken(true)
-          .then((token) => localStorage.setItem('token', token));
+          .then((token) => this.token = token);
       })
       .catch((error) => {
         console.log(error);
@@ -28,5 +28,8 @@ export class AuthService {
       .catch((error) => {
         console.log(error);
       });
+  }
+  isAuthenticated() {
+    return this.token != null;
   }
 }
