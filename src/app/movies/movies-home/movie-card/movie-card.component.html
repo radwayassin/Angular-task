@@ -1,0 +1,17 @@
+<div class="card movie-card">
+    <a [routerLink]="['view-movie', movie.id]">
+        <img [src]="imgUrl+movie.poster_path" class="card-img-top" alt="">
+    </a>
+    <div class="card-body">
+        <h5 class="card-title">{{movie.original_title}}</h5>
+        <p class="card-text">{{(movie.overview?.length>90)? (movie.overview | slice:0:90)+' ...
+            ':(movie.overview)}}</p>
+        <div class="btns">
+            <button class="btn like" *ngIf="!isLiked" (click)="getLiked(movie)"><i
+                    class="far fa-thumbs-up"></i></button>
+            <button class="btn like" *ngIf="isLiked" (click)="getLiked(movie)"><i class="fas fa-thumbs-up"></i></button>
+            <button class="btn fav" *ngIf="!isFav" (click)="getFavourits(movie)"><i class="far fa-heart"></i></button>
+            <button class="btn fav" *ngIf="isFav" (click)="getFavourits(movie)"><i class="fas fa-heart"></i></button>
+        </div>
+    </div>
+</div>

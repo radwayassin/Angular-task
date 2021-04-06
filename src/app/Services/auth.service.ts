@@ -15,7 +15,7 @@ export class AuthService {
         this.router.navigate(['/movies']);
         response.user
           .getIdToken(true)
-          .then((token) => this.token = token);
+          .then((token) => localStorage.setItem('token', token));
       })
       .catch((error) => {
         console.log(error);
@@ -24,12 +24,15 @@ export class AuthService {
   signUpUser(email: string, password: string) {
     this.fireAuth
       .createUserWithEmailAndPassword(email, password)
-      .then((response) => {})
+      .then((response) => {
+        console.log(response);
+      })
       .catch((error) => {
         console.log(error);
       });
   }
   isAuthenticated() {
+    this.token = localStorage.getItem('token');
     return this.token != null;
   }
 }

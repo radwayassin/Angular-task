@@ -27,4 +27,13 @@ export class DataService {
       )
       .pipe(map((res: any) => res.results));
   }
+  getMovieDetails(id: number) {
+    return this.http
+      .get(
+        `https://api.themoviedb.org/3/movie/` +
+          id +
+          `?api_key=8a08ff1253d9eede1c0c97c4ec3f625b`
+      )
+      .pipe(map((res: any) => res));
+  }
 }

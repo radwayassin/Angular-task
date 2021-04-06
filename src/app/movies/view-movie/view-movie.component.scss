@@ -1,0 +1,24 @@
+.view-movie {
+  img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  .info {
+    h2 {
+      position: relative;
+      top: 20%;
+      color: #fff;
+    }
+    p {
+      position: relative;
+      top: 20%;
+      color: #ccc;
+    }
+    .site {
+      position: relative;
+      top: 25%;
+      font-weight: bold;
+      color: aqua;
+    }
+  }
+}

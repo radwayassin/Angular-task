@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./likes.component.scss'],
 })
 export class LikesComponent implements OnInit {
-  likedMovies:Array<any>;
+  likedMovies: Array<any>;
   constructor() {}
 
   ngOnInit(): void {
-    this.likedMovies = JSON.parse(localStorage.getItem('likedMovies'))
+    this.likedMovies = JSON.parse(localStorage.getItem('likedMovies'));
   }
 }

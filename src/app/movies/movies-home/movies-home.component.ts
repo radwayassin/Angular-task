@@ -1,12 +1,12 @@
-import { DataService } from './../../Services/data.service';
+import { DataService } from '../../Services/data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-movies',
-  templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss'],
+  selector: 'app-movies-home',
+  templateUrl: './movies-home.component.html',
+  styleUrls: ['./movies-home.component.scss'],
 })
-export class MoviesComponent implements OnInit {
+export class MoviesHomeComponent implements OnInit {
   TopMovies = [];
   UpComing = [];
   NowPlay =[]

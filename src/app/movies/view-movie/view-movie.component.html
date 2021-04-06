@@ -1,0 +1,14 @@
+<div class="view-movie">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><img [src]="imgUrl+movieDetails?.poster_path" alt=""></div>
+            <div class="col-md-6 info">
+                <h2>
+                    {{movieDetails?.original_title}}
+                </h2>
+                <p>{{movieDetails?.overview}}</p>
+                <a [href]="movieDetails?.homepage" class="site">Go to Website</a>
+            </div>
+        </div>
+    </div>
+</div>
