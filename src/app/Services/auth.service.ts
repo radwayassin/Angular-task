@@ -1,40 +1,32 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private fireAuth: AngularFireAuth) {}
+  token: any;
+  constructor(private fireAuth: AngularFireAuth, private router: Router) {}
   signInUser(email: string, password: string) {
-     this.fireAuth
+    this.fireAuth
       .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log('sign in', user);
-        // ...
+      .then((response) => {
+        this.router.navigate(['/movies']);
+        response.user
+          .getIdToken(true)
+          .then((token) => localStorage.setItem('token', token));
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
+        console.log(error);
       });
   }
   signUpUser(email: string, password: string) {
-     this.fireAuth
+    this.fireAuth
       .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Sign up
-        const user = userCredential.user;
-        console.log('sign up', user);
-        // ...
-      })
+      .then((response) => {})
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        // ..
+        console.log(error);
       });
   }
 }

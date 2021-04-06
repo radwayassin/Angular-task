@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div class="likes">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" *ngFor="let like of likedMovies | keyvalue">
+                <app-movie-card [movie]='like'></app-movie-card>
+            </div>
+        </div>
+    </div>
+</div>

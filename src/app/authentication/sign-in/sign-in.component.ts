@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router, RouterModule, Routes } from '@angular/router';
 import { AuthService } from './../../Services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {

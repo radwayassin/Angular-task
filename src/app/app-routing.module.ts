@@ -1,8 +1,9 @@
+import { MoviesModule } from './movies/movies.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/authentication', pathMatch: 'full' },
+  { path: '', redirectTo: '/authentication/sign-in', pathMatch: 'full' },
   {
     path: 'authentication',
     loadChildren: () =>
@@ -10,6 +11,13 @@ const routes: Routes = [
         (mod) => mod.AuthenticationModule
       ),
   },
+  {
+    path: 'movies',
+    loadChildren: () =>
+      import('./movies/movies.module').then(
+        (mod) => mod.MoviesModule
+      ),
+  }
 ];
 
 @NgModule({

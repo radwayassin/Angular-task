@@ -1,0 +1,13 @@
+<div class="card movie-card">
+    <img [src]="imgUrl+movie.poster_path" class="card-img-top" alt="">
+    <div class="card-body">
+        <h5 class="card-title">{{movie.original_title}}</h5>
+        <p class="card-text">{{(movie.overview?.length>100)? (movie.overview | slice:0:99)+' ... ':(movie.overview)}}</p>
+        <div class="icones">
+            <a class="like" *ngIf="!isLiked" (click)="getLikeId(movie)"><i class="far fa-thumbs-up"></i></a>
+            <a class="like" *ngIf="isLiked" (click)="getLikeId(movie)"><i class="fas fa-thumbs-up"></i></a>
+            <a class="fav"  *ngIf="!isFav" (click)="getFavId(movie)"><i class="far fa-heart"></i></a>
+            <a class="fav" *ngIf="isFav" (click)="getFavId(movie)"><i class="fas fa-heart"></i></a>
+        </div>
+    </div>
+</div>

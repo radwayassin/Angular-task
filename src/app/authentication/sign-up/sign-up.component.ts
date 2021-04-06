@@ -8,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
+  name: any;
   constructor(private authService: AuthService) {}
   onSignUp() {
     const email = this.signUpForm.value.email;
     const password = this.signUpForm.value.password;
+    this.name = localStorage.setItem('name', this.signUpForm.value.name);
     this.authService.signUpUser(email, password);
   }
   ngOnInit(): void {

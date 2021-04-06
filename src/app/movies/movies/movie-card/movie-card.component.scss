@@ -1,0 +1,33 @@
+.movie-card {
+  height: 25em;
+  background-color: #555;
+  border-color: #555;
+  color: #fff;
+  margin-bottom: 1em;
+  img {
+    height: 15em;
+  }
+  .card-body {
+    padding: 1em;
+    .card-title {
+      font-size: 1em;
+      color: #fff;
+      margin-bottom: 0.5em;
+      height: 2.5em;
+    }
+    .card-text {
+      font-size: 0.7em;
+      color: rgb(228, 228, 228);
+      margin-bottom: 0.5em;
+    }
+    .icones {
+      .like,
+      .fav {
+        float: right;
+        margin: 0 0.3em;
+        color: rgb(42, 151, 151);
+        font-size: 1.2em;
+      }
+    }
+  }
+}
