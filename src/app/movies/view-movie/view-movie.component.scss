@@ -5,20 +5,41 @@
   }
   .info {
     h2 {
-      position: relative;
-      top: 20%;
       color: #fff;
+      margin-top: 2em;
     }
     p {
-      position: relative;
-      top: 20%;
       color: #ccc;
     }
     .site {
-      position: relative;
-      top: 25%;
+      margin-top: 2em;
       font-weight: bold;
-      color: aqua;
+      color: rgb(42, 151, 151);
+    }
+    .form-details {
+      padding: 1em;
+      border-radius: 20px;
+      background-color: #333;
+      margin: 2em 0;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 15em;
+      .comment-list{
+        ::marker{
+          color: rgb(42, 151, 151);
+          font-size: 1.5em;
+        }
+      }
+      .btn-s {
+        background-color: rgb(42, 151, 151);
+        color: #fff;
+        width: 10em;
+        float: right;
+        margin: 1em 0;
+        padding: 0.3em 1.2em;
+      }
     }
   }
 }

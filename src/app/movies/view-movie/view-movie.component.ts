@@ -1,6 +1,7 @@
 import { DataService } from './../../Services/data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-view-movie',
@@ -11,20 +12,24 @@ export class ViewMovieComponent implements OnInit {
   movieId: any;
   movieDetails: any;
   imgUrl = 'https://image.tmdb.org/t/p/w500';
-  constructor(
-    private route: ActivatedRoute,
-    private dataService: DataService
-  ) {}
+  comments: Array<any> =[];
+  constructor(private route: ActivatedRoute, private dataService: DataService) {
+    localStorage.setItem('comments', JSON.stringify(this.comments));
+  }
   getMovie() {
     this.dataService.getMovieDetails(this.movieId).subscribe(
       (res) => {
         this.movieDetails = res;
-        console.log(this.movieDetails)
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+  submitComment(commentForm: NgForm) {
+    const comment = commentForm.value.comment;
+    this.comments.push(comment);
+    localStorage.setItem('comments', JSON.stringify(this.comments));
   }
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {

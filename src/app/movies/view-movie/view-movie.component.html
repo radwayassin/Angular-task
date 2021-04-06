@@ -8,6 +8,18 @@
                 </h2>
                 <p>{{movieDetails?.overview}}</p>
                 <a [href]="movieDetails?.homepage" class="site">Go to Website</a>
+                <div class="form-details">
+                    <ul class="comment-list">
+                        <li *ngFor="let comment of comments">
+                            {{comment}}
+                        </li>
+                    </ul>
+                    <form #commentForm="ngForm" (ngSubmit)="submitComment(commentForm)">
+                        <label for="comment">Write a comment</label>
+                        <input id="comment" class="form-control" name="comment" ngModel>
+                        <button class="btn btn-s" type="submit">Send</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
