@@ -24,10 +24,6 @@ export class SignUpComponent implements OnInit {
         Validators.required,
         Validators.minLength(8),
       ]),
-      'confirm-pass': new FormControl(null, [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
     });
   }
 }

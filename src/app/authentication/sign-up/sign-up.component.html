@@ -30,15 +30,6 @@
                                 Please enter vaild password!
                             </span>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword2">Confirm Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword2"
-                                formControlName="confirm-pass">
-                            <span class="help"
-                                *ngIf="!signUpForm.get('confirm-pass').valid && signUpForm.get('confirm-pass').touched || signUpForm.get('confirm-pass') != signUpForm.get('password')">
-                                Passwords not matching!
-                            </span>
-                        </div>
                         <button type="submit" class="btn btn-sign">Sign up</button>
                     </form>
                     <h6>Already have account? <a routerLink="/authentication/sign-in">Sign in</a></h6>

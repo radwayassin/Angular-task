@@ -18,6 +18,7 @@ export class AuthService {
           .then((token) => localStorage.setItem('token', token));
       })
       .catch((error) => {
+        alert(error.message);
         console.log(error);
       });
   }
@@ -25,9 +26,12 @@ export class AuthService {
     this.fireAuth
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
+        this.router.navigate(['/authentication/sign-in']);
+
         console.log(response);
       })
       .catch((error) => {
+        alert(error.message);
         console.log(error);
       });
   }
