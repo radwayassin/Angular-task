@@ -98,6 +98,7 @@ export class MoviesHomeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.existLikedMovies = JSON.parse(localStorage.getItem('likedMovies'));
+    this.existFavMovies = JSON.parse(localStorage.getItem('favMovies'));
     this.topMovies();
     this.upComing();
     this.nowPlaying();
