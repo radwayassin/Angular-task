@@ -1,27 +1,23 @@
 <div class="view-movie">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6"><img [src]="imgUrl+movieDetails?.poster_path" alt=""></div>
-            <div class="col-md-6 info">
-                <h2>
-                    {{movieDetails?.original_title}}
-                </h2>
-                <p>{{movieDetails?.overview}}</p>
-                <a [href]="movieDetails?.homepage" class="site">Go to Website</a>
-                <div class="form-details">
-                    <h6>Comments</h6>
-                    <ul class="comment-list">
-                        <li *ngFor="let comment of comments">
-                            {{comment}}
-                        </li>
-                    </ul>
-                    <form #commentForm="ngForm" (ngSubmit)="submitComment(commentForm)">
-                        <label for="comment">Write a comment</label>
-                        <input id="comment" class="form-control" name="comment" ngModel>
-                        <button class="btn btn-s" type="submit">Send</button>
-                    </form>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6"><img [src]="imgUrl+movieDetails?.poster_path" alt=""></div>
+      <div class="col-md-6 info">
+        <h2>{{movieDetails?.original_title}}</h2>
+        <p>{{movieDetails?.overview}}</p>
+        <a [href]="movieDetails?.homepage" class="site">Go to Website</a>
+        <div class="form-details">
+          <h6>Comments</h6>
+          <ul class="comment-list">
+            <li *ngFor="let comment of comments">{{comment}}</li>
+          </ul>
+          <form #commentForm="ngForm" (ngSubmit)="submitComment(commentForm)">
+            <label for="comment">Write a comment</label>
+            <input id="comment" class="form-control" name="comment" ngModel>
+            <button class="btn btn-s" type="submit">Send</button>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </div>

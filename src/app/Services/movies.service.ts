@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class DataService {
+export class MoviesService {
   constructor(private http: HttpClient) {}
   getPopler() {
     return this.http

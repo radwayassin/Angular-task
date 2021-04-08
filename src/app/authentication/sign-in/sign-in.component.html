@@ -4,7 +4,7 @@
       <div class="offset-md-3"></div>
       <div class="col-md-6">
         <div class="form-details">
-          <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+          <form [formGroup]="signInForm">
             <div class="form-group">
               <label for="exampleInputEmail1">Email Address*</label>
                 <input type="email" class="form-control" id="exampleInputEmail1"
@@ -17,7 +17,7 @@
                      formControlName="password">
               <span class="help" *ngIf="!signInForm.get('password').valid && signInForm.get('password').touched">Password is required!</span>
             </div>
-            <button type="submit" class="btn btn-sign" [disabled]="signInForm.invalid">Sign in</button>
+            <button type="submit" class="btn btn-sign" [disabled]="signInForm.invalid" (click)="onSignIn()">Sign in</button>
           </form>
           <h6>Don't have account? <a routerLink="/authentication/sign-up">Sign up</a></h6>
         </div>

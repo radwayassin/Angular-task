@@ -1,106 +1,81 @@
-import { DataService } from '../../Services/data.service';
-import { Component, OnInit } from '@angular/core';
+import {MoviesService} from '../../Services/movies.service';
+import {Component, OnInit} from '@angular/core';
+
 @Component({
   selector: 'app-movies-home',
   templateUrl: './movies-home.component.html',
   styleUrls: ['./movies-home.component.scss'],
 })
 export class MoviesHomeComponent implements OnInit {
-  TopMovies = [];
-  UpComing = [];
-  NowPlay = [];
+  topMovies = [];
+  upcomingMovies = [];
+  nowPlayingMovies = [];
   existLikedMovies = [];
   existFavMovies = [];
-  constructor(private dataService: DataService) {}
-  topMovies() {
-    this.dataService.getPopler().subscribe(
-      (res) => {
-        this.TopMovies = res;
-        this.existLikedMovies.forEach((likedMovie) => {
-          this.TopMovies.forEach((topMovie) => {
-            if (likedMovie.id == topMovie.id) {
-              topMovie.isLiked = true;
-            } else {
-              topMovie.isLiked = false;
-            }
-          });
-        });
-        this.existFavMovies.forEach((favMovie) => {
-          this.TopMovies.forEach((topMovie) => {
-            if (favMovie.id == topMovie.id) {
-              topMovie.isFav = true;
-            } else {
-              topMovie.isFav = false;
-            }
-          });
-        });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+
+  constructor(private moviesService: MoviesService) {
   }
-  upComing() {
-    this.dataService.getUpComing().subscribe(
-      (res) => {
-        this.UpComing = res;
-        this.existLikedMovies.forEach((likedMovie) => {
-          this.UpComing.forEach((upcomingMovie) => {
-            if (likedMovie.id == upcomingMovie.id) {
-              upcomingMovie.isLiked = true;
-            } else {
-              upcomingMovie.isLiked = false;
-            }
-          });
-        });
-        this.existFavMovies.forEach((favMovie) => {
-          this.UpComing.forEach((upcomingMovie) => {
-            if (favMovie.id == upcomingMovie.id) {
-              upcomingMovie.isFav = true;
-            } else {
-              upcomingMovie.isFav = false;
-            }
-          });
-        });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-  nowPlaying() {
-    this.dataService.getNowPlay().subscribe(
-      (res) => {
-        this.NowPlay = res;
-        this.existLikedMovies.forEach((likedMovie) => {
-          this.NowPlay.forEach((nowplayMovie) => {
-            if (likedMovie.id == nowplayMovie.id) {
-              nowplayMovie.isLiked = true;
-            } else {
-              nowplayMovie.isLiked = false;
-            }
-          });
-        });
-        this.existFavMovies.forEach((favMovie) => {
-          this.NowPlay.forEach((nowplayMovie) => {
-            if (favMovie.id == nowplayMovie.id) {
-              nowplayMovie.isFav = true;
-            } else {
-              nowplayMovie.isFav = false;
-            }
-          });
-        });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+
   ngOnInit(): void {
+    // get liked and favourite movies from local storage .
     this.existLikedMovies = JSON.parse(localStorage.getItem('likedMovies'));
     this.existFavMovies = JSON.parse(localStorage.getItem('favMovies'));
-    this.topMovies();
-    this.upComing();
-    this.nowPlaying();
+    this.getTopMovies();
+    this.getUpComingMovies();
+    this.getNowPlayingMovies();
+  }
+
+  getTopMovies() {
+    this.moviesService.getPopler().subscribe(
+      (res) => {
+        this.topMovies = res;
+        this.getLikedFavMoviesFromLocatStrg(this.topMovies, this.existLikedMovies, this.existFavMovies);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  getUpComingMovies() {
+    this.moviesService.getUpComing().subscribe(
+      (res) => {
+        this.upcomingMovies = res;
+        this.getLikedFavMoviesFromLocatStrg(this.upcomingMovies, this.existLikedMovies, this.existFavMovies);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  getNowPlayingMovies() {
+    this.moviesService.getNowPlay().subscribe(
+      (res) => {
+        this.nowPlayingMovies = res;
+        this.getLikedFavMoviesFromLocatStrg(this.nowPlayingMovies, this.existLikedMovies, this.existFavMovies);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  getLikedFavMoviesFromLocatStrg(allMovies: any [], likedList: any [], favouriteList: any []) {
+    // loop for liked videos to make the icon selected
+    likedList.forEach((likedMovie) => {
+      allMovies.forEach((allMovie) => {
+        if (likedMovie.id === allMovie.id) {
+          allMovie.isLiked = true;
+        }
+      });
+    });
+    favouriteList.forEach((favMovie) => {
+      allMovies.forEach((nowPlayingMovie) => {
+        if (favMovie.id === nowPlayingMovie.id) {
+          nowPlayingMovie.isFav = true;
+        }
+      });
+    });
   }
 }

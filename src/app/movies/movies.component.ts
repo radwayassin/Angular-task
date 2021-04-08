@@ -10,7 +10,6 @@ export class MoviesComponent implements OnInit {
     localStorage.setItem('likedMovies', JSON.stringify([]));
     localStorage.setItem('favMovies', JSON.stringify([]));
     localStorage.setItem('comments', JSON.stringify([]));
-
   }
 
   ngOnInit(): void {}

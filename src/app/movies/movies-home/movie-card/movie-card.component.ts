@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-movie-card',
@@ -8,33 +8,34 @@ import { Component, Input, OnInit } from '@angular/core';
 export class MovieCardComponent implements OnInit {
   @Input() movie;
   imgUrl = 'https://image.tmdb.org/t/p/w500';
-  isFav: boolean;
   likedMovies: Array<any> = [];
   favMovies: Array<any> = [];
+
   constructor() {
   }
-  getLiked(movie: any) {
+
+  checkUncheckLike(movie: any) {
+    // get liked movies from local storage and add or remove from it
     this.likedMovies = JSON.parse(localStorage.getItem('likedMovies'));
     if (!movie.isLiked) {
       movie.isLiked = true;
       this.likedMovies.push(movie);
-      localStorage.setItem('likedMovies', JSON.stringify(this.likedMovies));
-      console.log(this.likedMovies);
     } else {
       movie.isLiked = false;
       this.likedMovies = this.likedMovies.filter((movieItem) => {
         return movieItem.id !== movie.id;
       });
-      localStorage.setItem('likedMovies', JSON.stringify(this.likedMovies));
     }
+    localStorage.setItem('likedMovies', JSON.stringify(this.likedMovies));
   }
-  getFavourits(movie: any) {
+
+  checkUncheckFavourite(movie: any) {
+    // get favourite movies from local storage and add or remove from it
     this.favMovies = JSON.parse(localStorage.getItem('favMovies'));
     if (!movie.isFav) {
       movie.isFav = true;
       this.favMovies.push(movie);
       localStorage.setItem('favMovies', JSON.stringify(this.favMovies));
-      console.log(this.favMovies);
     } else {
       movie.isFav = false;
       this.favMovies = this.favMovies.filter((movieItem) => {
@@ -43,5 +44,8 @@ export class MovieCardComponent implements OnInit {
       localStorage.setItem('favMovies', JSON.stringify(this.favMovies));
     }
   }
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    console.log(this.movie) ;
+  }
 }

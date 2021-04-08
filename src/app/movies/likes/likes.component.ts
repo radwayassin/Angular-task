@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-likes',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LikesComponent implements OnInit {
   likedMovies: Array<any>;
-  constructor() {}
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.likedMovies = JSON.parse(localStorage.getItem('likedMovies'));

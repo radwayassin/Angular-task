@@ -1,48 +1,48 @@
 <div class="movies">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
-                <!-- Nav tabs -->
-                <ul class="nav menu nav-tabs flex-column" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="populer-tab" data-toggle="tab" href="#populer" role="tab"
-                            aria-controls="populer" aria-selected="true">Top Movies</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="upcoming-tab" data-toggle="tab" href="#upcoming" role="tab"
-                            aria-controls="upcoming" aria-selected="false">Upcoming Movies</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="nowplay-tab" data-toggle="tab" href="#nowplay" role="tab"
-                            aria-controls="nowplay" aria-selected="false">Now Playing Movies</a>
-                    </li>
-                </ul>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <!-- Nav tabs -->
+        <ul class="nav menu nav-tabs flex-column" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="populer-tab" data-toggle="tab" href="#populer" role="tab"
+               aria-controls="populer" aria-selected="true">Top Movies</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="upcoming-tab" data-toggle="tab" href="#upcoming" role="tab"
+               aria-controls="upcoming" aria-selected="false">Upcoming Movies</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="nowplay-tab" data-toggle="tab" href="#nowplay" role="tab"
+               aria-controls="nowplay" aria-selected="false">Now Playing Movies</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <div class="tab-content">
+          <div class="tab-pane active" id="populer" role="tabpanel" aria-labelledby="populer-tab">
+            <div class="row">
+              <div class="col-md-3" *ngFor="let topMovie of topMovies">
+                <app-movie-card [movie]='topMovie'></app-movie-card>
+              </div>
             </div>
-            <div class="col-md-9">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="populer" role="tabpanel" aria-labelledby="populer-tab">
-                        <div class="row">
-                            <div class="col-md-3" *ngFor="let top of TopMovies">
-                                <app-movie-card [movie]='top'></app-movie-card>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
-                        <div class="row">
-                            <div class="col-md-3" *ngFor="let up of UpComing">
-                                <app-movie-card [movie]='up'></app-movie-card>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="nowplay" role="tabpanel" aria-labelledby="nowplay-tab">
-                        <div class="row">
-                            <div class="col-md-3" *ngFor="let now of NowPlay">
-                                <app-movie-card [movie]='now'></app-movie-card>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="tab-pane" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+            <div class="row">
+              <div class="col-md-3" *ngFor="let upComingMovie of upcomingMovies">
+                <app-movie-card [movie]='upComingMovie'></app-movie-card>
+              </div>
             </div>
+          </div>
+          <div class="tab-pane" id="nowplay" role="tabpanel" aria-labelledby="nowplay-tab">
+            <div class="row">
+              <div class="col-md-3" *ngFor="let nowPlayingMovie of nowPlayingMovies">
+                <app-movie-card [movie]='nowPlayingMovie'></app-movie-card>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
