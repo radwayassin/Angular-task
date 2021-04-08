@@ -1,41 +1,39 @@
 <div class="sign-up">
-    <div class="container">
-        <div class="row">
-            <div class="offset-md-3"></div>
-            <div class="col-md-6">
-                <div class="form-details">
-                    <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
-                        <div class="form-group">
-                            <label for="validationServer01">Full name</label>
-                            <input type="text" class="form-control" id="validationServer01" formControlName="name">
-                            <span class="help" *ngIf="!signUpForm.get('name').valid && signUpForm.get('name').touched">
-                                Please enter vaild name!
-                            </span>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" formControlName="email">
-                            <span class="help"
-                                *ngIf="!signUpForm.get('email').valid && signUpForm.get('email').touched">
-                                Please enter vaild email!
-                            </span>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                formControlName="password">
-                            <span class="help"
-                                *ngIf="!signUpForm.get('password').valid && signUpForm.get('password').touched">
-                                Please enter vaild password!
-                            </span>
-                        </div>
-                        <button type="submit" class="btn btn-sign">Sign up</button>
-                    </form>
-                    <h6>Already have account? <a routerLink="/authentication/sign-in">Sign in</a></h6>
-                </div>
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-3"></div>
+      <div class="col-md-6">
+        <div class="form-details">
+          <form [formGroup]="signUpForm" (ngSubmit)="onClickSignUp()">
+            <div class="form-group">
+              <label for="validationServer01">User name *</label>
+              <input type="text" class="form-control" id="validationServer01" formControlName="name">
+              <span class="help" *ngIf="signUpForm.get('name').hasError('required') && signUpForm.get('name').touched">
+                User Name is required!</span>
+              <span class="help" *ngIf="signUpForm.get('name').hasError('minlength') && signUpForm.get('name').touched">
+                User Name must be more than 7 character!</span>
+              <span class="help" *ngIf="signUpForm.get('name').hasError('maxlength') && signUpForm.get('name').touched">
+                User Name must be less than or equal 20 character!</span>
             </div>
-            <div class="offset-md-3"></div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address*</label>
+              <input type="email" class="form-control" id="exampleInputEmail1"
+                     aria-describedby="emailHelp" formControlName="email">
+              <span class="help"
+                    *ngIf="signUpForm.get('email').hasError('required') && signUpForm.get('email').touched">Email is required!</span>
+              <span class="help" *ngIf="signUpForm.get('email').hasError('pattern') && signUpForm.get('email').touched">Please enter valid email!</span>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password*</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+              <span class="help" *ngIf="signUpForm.get('password').hasError('required') && signUpForm.get('password').touched">Password is required!</span>
+              <span class="help" *ngIf="signUpForm.get('password').hasError('minlength') && signUpForm.get('password').touched">Password should be 8 characters or more!</span>
+            </div>
+            <button type="submit" class="btn btn-sign" [disabled]="signUpForm.invalid">Sign up</button>
+          </form>
+          <h6>Already have account? <a routerLink="/authentication/sign-in">Sign in</a></h6>
         </div>
+      </div>
     </div>
+  </div>
 </div>
