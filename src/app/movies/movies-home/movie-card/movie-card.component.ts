@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -10,10 +9,7 @@ export class MovieCardComponent implements OnInit {
   imgUrl = 'https://image.tmdb.org/t/p/w500';
   likedMovies: Array<any> = [];
   favMovies: Array<any> = [];
-
-  constructor() {
-  }
-
+  constructor() {}
   checkUncheckLike(movie: any) {
     // get liked movies from local storage and add or remove from it
     this.likedMovies = JSON.parse(localStorage.getItem('likedMovies'));
@@ -28,7 +24,6 @@ export class MovieCardComponent implements OnInit {
     }
     localStorage.setItem('likedMovies', JSON.stringify(this.likedMovies));
   }
-
   checkUncheckFavourite(movie: any) {
     // get favourite movies from local storage and add or remove from it
     this.favMovies = JSON.parse(localStorage.getItem('favMovies'));
@@ -44,8 +39,5 @@ export class MovieCardComponent implements OnInit {
       localStorage.setItem('favMovies', JSON.stringify(this.favMovies));
     }
   }
-
-  ngOnInit(): void {
-    console.log(this.movie) ;
-  }
+  ngOnInit(): void {}
 }

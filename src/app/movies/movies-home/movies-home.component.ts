@@ -1,6 +1,5 @@
-import {MoviesService} from '../../Services/movies.service';
-import {Component, OnInit} from '@angular/core';
-
+import { MoviesService } from '../../Services/movies.service';
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-movies-home',
   templateUrl: './movies-home.component.html',
@@ -12,10 +11,7 @@ export class MoviesHomeComponent implements OnInit {
   nowPlayingMovies = [];
   existLikedMovies = [];
   existFavMovies = [];
-
-  constructor(private moviesService: MoviesService) {
-  }
-
+  constructor(private moviesService: MoviesService) {}
   ngOnInit(): void {
     // get liked and favourite movies from local storage .
     this.existLikedMovies = JSON.parse(localStorage.getItem('likedMovies'));
@@ -24,45 +20,57 @@ export class MoviesHomeComponent implements OnInit {
     this.getUpComingMovies();
     this.getNowPlayingMovies();
   }
-
   getTopMovies() {
     this.moviesService.getPopler().subscribe(
       (res) => {
         this.topMovies = res;
-        this.getLikedFavMoviesFromLocatStrg(this.topMovies, this.existLikedMovies, this.existFavMovies);
+        this.getLikedFavMoviesFromLocatStrg(
+          this.topMovies,
+          this.existLikedMovies,
+          this.existFavMovies
+        );
       },
       (error) => {
         console.log(error);
       }
     );
   }
-
   getUpComingMovies() {
     this.moviesService.getUpComing().subscribe(
       (res) => {
         this.upcomingMovies = res;
-        this.getLikedFavMoviesFromLocatStrg(this.upcomingMovies, this.existLikedMovies, this.existFavMovies);
+        this.getLikedFavMoviesFromLocatStrg(
+          this.upcomingMovies,
+          this.existLikedMovies,
+          this.existFavMovies
+        );
       },
       (error) => {
         console.log(error);
       }
     );
   }
-
   getNowPlayingMovies() {
     this.moviesService.getNowPlay().subscribe(
       (res) => {
         this.nowPlayingMovies = res;
-        this.getLikedFavMoviesFromLocatStrg(this.nowPlayingMovies, this.existLikedMovies, this.existFavMovies);
+        this.getLikedFavMoviesFromLocatStrg(
+          this.nowPlayingMovies,
+          this.existLikedMovies,
+          this.existFavMovies
+        );
       },
       (error) => {
         console.log(error);
       }
     );
   }
-
-  getLikedFavMoviesFromLocatStrg(allMovies: any [], likedList: any [], favouriteList: any []) {
-    // loop for liked videos to make the icon selected
+  getLikedFavMoviesFromLocatStrg(
+    allMovies: any[],
+    likedList: any[],
+    favouriteList: any[]
+  ) {
+    // loop for liked movies to make the icon selected
     likedList.forEach((likedMovie) => {
       allMovies.forEach((allMovie) => {
         if (likedMovie.id === allMovie.id) {
@@ -70,6 +78,7 @@ export class MoviesHomeComponent implements OnInit {
         }
       });
     });
+    // loop for fav movies to make the icon selected
     favouriteList.forEach((favMovie) => {
       allMovies.forEach((nowPlayingMovie) => {
         if (favMovie.id === nowPlayingMovie.id) {
