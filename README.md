@@ -32,6 +32,9 @@ In this task, I'm using Angular with HTML, CSS, and bootstrap.
 it contains an authentication module with two components to sign up and sign in related to auth service to allow only valid users access to the system and auth guard to prevent unauthenticated or unauthorized users from accessing restricted routes;
 
 and contains a movies module with a header component to navigate between pages and log out button;
-and movies home components to toggle between (top movies - upcoming movies - now playing movies) each tab contain a card component as a child, this child card contains like and favorite buttons to add/remove to likes and favorites pages;
+
+and movies home component to toggle between (top movies - upcoming movies - now playing movies) each tab contain a card component as a child related to movies service to get movies data,
+
+this child card contains like and favorite buttons to add/remove to likes and favorites pages;
 
 each card can navigate to view movie component that contains details about the movie and write a comment.
