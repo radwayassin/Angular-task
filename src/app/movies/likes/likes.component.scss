@@ -1,0 +1,12 @@
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+  height: 80vh;
+  img {
+    margin: 1em 0;
+  }
+}

@@ -1,5 +1,9 @@
 <div class="favourits">
     <div class="container">
+        <div class="no-data" *ngIf="favMovies.length == 0">
+            <img src="assets/cancel.png" alt="">
+            <h3>No data to show</h3>
+        </div>
         <div class="row">
             <div class="col-md-3" *ngFor="let fav of favMovies">
                 <app-movie-card [movie]='fav'></app-movie-card>
